@@ -1,6 +1,6 @@
-import math # if you can't use this import, remove it and rewrite tanh function and logistic function
+import math  # if you can't use this import, remove it and rewrite tanh function and logistic function
 
-Activation = int # define a type can be passed to predict, int is the return value of the function
+Activation = int  # define a type can be passed to predict, int is the return value of the function
 
 
 def mat_dim(mat: list) -> list:
@@ -60,7 +60,7 @@ def predict(e: list, w: list, p: list, activ: Activation):
             e[i] = activ(p[layer][i] + e[i])
     return e
 
- 
+
 #------------------------------#
 #-----ACTIVATION FUNCTIONS-----#
 #------------------------------#
@@ -92,7 +92,7 @@ def relu(x: int) -> int:
           |      
           |      
     """
-    if x<0:
+    if x < 0:
         x = 0
     return x
 
@@ -120,8 +120,6 @@ def tanh(x: int) -> int:
     return math.tanh(x)
 
 
-
-
 def load(filename: str = "sauvegarde.txt") -> (list, list):
     """
     extract coefs and bias from the file
@@ -130,8 +128,8 @@ def load(filename: str = "sauvegarde.txt") -> (list, list):
     contenu = file.read().split('\n')
     file.close()
 
-    w = eval(contenu[0]) # warning ! the "eval" function can be a security flaw if you open files you have been given
-    p = eval(contenu[1]) #           always check the contents of the backup files, they should only be array of numbers
+    w = eval(contenu[0])  # warning ! the "eval" function can be a security flaw if you open files you have been given
+    p = eval(contenu[1])  #           always check the contents of the backup files, they should only be array of numbers
 
     return w, p
 
